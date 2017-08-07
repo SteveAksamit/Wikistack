@@ -3,18 +3,21 @@ var router = express.Router();
 
 router.get('/', (req, res, next) => {
   //retreive all wiki pages
-  res.send('got to GET /wiki')
+  res.redirect('/');
+  //res.send('got to GET /wiki')
 });
 
 router.post('/', (req, res, next) => {
   //submit a new page to the db
-  res.send('got to POST / wiki')
+  console.log(req.body)
+  // res.json(req.body)
+  res.json('test')
 });
 
 router.get('/add', (req, res, next) => {
   //retreive the ADD PAGE form
-  res.send('got to GET wiki/add')
+  res.render('addpage')
 });
 
 
-modules.exports = router;
+module.exports = router;

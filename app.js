@@ -5,14 +5,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 
-
 const models = require('./models');
 
 // ... other stuff
 
 models.User.sync({})
 .then(function () {
-    return models.Page.sync({})
+    return models.Page.sync({});
 })
 .then(function () {
     // make sure to replace the name below with your express app
@@ -23,23 +22,22 @@ models.User.sync({})
 .catch(console.error);
 
 
-app.engine('html', nunjucks.render);
-app.set('view engine', 'html');
+// app.engine('html', nunjucks.render);
+// app.set('view engine', 'html');
 
-//logging middleware
-app.use(morgan('dev'));
 
 //body parsing
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-
 app.use(express.static('public'));
 
-app.get('/',function(req, res){
+app.use('/', routes);
+
+app.get('/', function(req, res){
   res.render('index');
-})
+});
 
 // point nunjucks to the directory containing templates and turn off caching; configure returns an Environment
 // instance, which we'll want to use to add Markdown support later.
