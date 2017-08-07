@@ -16,7 +16,6 @@ const Page = db.define(
     },
     urlTitle: {
       type: Sequelize.STRING,
-      allowNull: false,
       get() {
         const route = this.getDataValue('urlTitle')
         return '/wiki/' + route
@@ -31,9 +30,6 @@ const Page = db.define(
     status: {
       type: Sequelize.ENUM('open', 'closed')
     }
-  },
-  {
-
   }
 );
 

@@ -22,8 +22,8 @@ models.User.sync({})
 .catch(console.error);
 
 
-// app.engine('html', nunjucks.render);
-// app.set('view engine', 'html');
+ app.engine('html', nunjucks.render);
+ app.set('view engine', 'html');
 
 
 //body parsing
